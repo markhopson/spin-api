@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    artifact.spinnaker.io/location: default
+    artifact.spinnaker.io/name: mhopsoneksapi
+    artifact.spinnaker.io/type: kubernetes/deployment
+    moniker.spinnaker.io/application: mhopsoneksapi
+    moniker.spinnaker.io/cluster: deployment mhopsoneksapi
+  labels:
+    app: mhopsoneksapi
+    app.kubernetes.io/managed-by: spinnaker
+    app.kubernetes.io/name: mhopsoneksapi
+  name: mhopsoneksapi
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mhopsoneksapi
+  template:
+    metadata:
+      annotations:
+        artifact.spinnaker.io/location: default
+        artifact.spinnaker.io/name: mhopsoneksapi
+        artifact.spinnaker.io/type: kubernetes/deployment
+        moniker.spinnaker.io/application: mhopsoneksapi
+        moniker.spinnaker.io/cluster: deployment mhopsoneksapi
+      labels:
+        app: mhopsoneksapi
+        app.kubernetes.io/managed-by: spinnaker
+        app.kubernetes.io/name: mhopsoneksapi
+    spec:
+      containers:
+        - image: markhopson/sandbox
+          name: nginx
+          ports:
+            - containerPort: 80
